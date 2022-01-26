@@ -1,4 +1,56 @@
-const mysql = require('mysql2');
+
+const express = require('express')
+const mongoose = require('mongoose')
+require('dotenv').config({ path: './private/.env' })
+const app = express()
+
+
+
+mongoose.connect(process.env.MONGOURI, 
+    {useNewUrlParser: true, useUnifiedTopology: true},
+    () => console.log("Connected to MongoDB"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*const mysql = require('mysql2');
 const express = require('express')
 
 require('dotenv').config({path: './private/.env'})
@@ -25,4 +77,4 @@ const connection = mysql.createConnection({
 
  
 
-module.exports = connection
+module.exports = connection*/

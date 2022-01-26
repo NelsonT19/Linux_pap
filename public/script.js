@@ -82,14 +82,14 @@ function insertUtilizador(){
 
 
     const obj = {
-        idDepartment:tipo,
-        Name: nome,
-        Morada_rua: morada_rua,
-        Morada_numero: morada_num,
-        Datanascimento:dnasc,
-        Telemovel:telem,
-        Email:email,
-        idCards:idcard,
+        idCard:idcard,
+        nome: nome,
+        morada_rua: morada_rua,
+        morada_num: morada_num,
+        datanascimento:dnasc,
+        email:email,
+        telemovel:telem,
+        departamento:tipo,
     }
 
     jsonObj = JSON.stringify(obj)
@@ -104,7 +104,7 @@ function insertUtilizador(){
         }
 
         
-        fetch('http://localhost:3000/utilizador',options)
+        fetch('http://localhost:3000/createCard',options)
         .then(res => res.json())
         .then(data => alert(data.message))
         .catch((err) => {

@@ -1,5 +1,4 @@
-const express = require('express')
-const inserirutilizadorRoute = express.Router()
+/*
 const connection = require('../dbconnection')
 
 
@@ -24,4 +23,4 @@ inserirutilizadorRoute.post('/', (req,res) => {
 
 
 
-module.exports = inserirutilizadorRoute
+module.exports = inserirutilizadorRoute*/

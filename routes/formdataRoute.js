@@ -1,21 +1,28 @@
+
 const express = require('express')
-const formdataRoute = express.Router()
-const connection = require('../dbconnection')
+const router = express.Router()
 
+const usersModel = require('../models/usersModel')
 
-formdataRoute.get('/',(req,res) =>{
-
-    connection.query("SELECT * FROM Department ",(err,result) =>{
-        if(err){
-            console.log(err)
-            console.log('Erro na BD...')
-        }else{
-            res.json(result)
-        }
-
-   })
+router.post('/', (req, res) => {
     
+    usersModel.find({'departamento':{$eq: req.body.departamento}})
+    .exec()
+    .then((result)=>{
+        ShowDep = new usersModel({
+            departamento: req.body.departamento
+        })
+        ShowDep.save()
+        .then(result =>{
+            
+        })
+    })
+
 })
 
 
-module.exports = formdataRoute
+
+
+
+
+module.exports = router

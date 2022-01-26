@@ -1,9 +1,9 @@
 const express = require('express')
-const path = require('path')
 const app = express()
-const PORT = 3000;
-const connection = require('./dbconnection')
 var indexRouter = require("./routes/loginrouter")
+const path = require('path')
+const connection = require('./dbconnection')
+
 
 // set the view engine to ejs
 
@@ -30,7 +30,9 @@ require('dotenv').config({path: './private/.env'})
    app.use("/", indexRouter)
 
 //pase url-encoded bodies (as sent by html forms)
-app.use(express.json({extended:false}))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json({ extended: false }))
+
 
 //define rotas possiveis
 
@@ -48,13 +50,12 @@ app.get('/insertUtilizador',function(req,res){
 });
 
 app.use('/formdata',require('./routes/formdataRoute'))
-app.use('/utilizador',require('./routes/inserirutilizadorRoute'))
+//app.use('/utilizador',require('./routes/inserirutilizadorRoute'))
+app.use('/createCard', require('./routes/createUsersRoute'))
 
-
-
-
-
+// api read card 
 const {readCard} = require('./readCard')
+
 
 app.get('/readcard', (req,res)=>{
    const SerialPort = require("serialport");
@@ -68,43 +69,29 @@ app.get('/readcard', (req,res)=>{
    mySerial.on('open',function(){
       console.log('Connection whit RFID initialised...');
       parser.on('data', function (data){
-         console.log(data); 
+         //console.log(data); 
          mySerial.close()
          res.json({cardID: data})
+        console.log(data)
           //enviar em formato JSON
-          let tagCard = document.getElementById('tag').value = data;
+        
           
-         
       })
    });
 
    })
+   
+  //fim api
 
 
-   app.listen(PORT, function(){
-      console.log(`Server is running on PORT: ` + PORT);
-   });
 
 
-//import depedences of RFID
-/*
-const SerialPort = require("serialport");
+  
+app.listen(3000,(error)=>{
+    if(error) throw error
+    console.log('listening on port 3000')
+})
 
 
-//configuração da serialport
-const ReadLine = SerialPort.parsers.Readline;
-const parser = new ReadLine({delimiter: '\r\n'});
-const mySerial = new SerialPort("/dev/ttyACM0", {
-   baudRate:9600,
 
-});
-mySerial.pipe(parser);
 
-mySerial.on('open',function(){
-   console.log('Connection whit RFID initialised...');
-   parser.on('data', function (data){
-      console.log(data);
-
-      
-   })
-});*/
