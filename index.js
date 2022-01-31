@@ -50,7 +50,7 @@ app.get('/insertUtilizador',function(req,res){
 });
 
 app.use('/formdata',require('./routes/formdataRoute'))
-//app.use('/utilizador',require('./routes/inserirutilizadorRoute'))
+app.use('/dep',require('./routes/depRoute'))
 app.use('/createCard', require('./routes/createUsersRoute'))
 
 // api read card 

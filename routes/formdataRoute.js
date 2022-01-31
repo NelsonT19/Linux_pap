@@ -1,27 +1,18 @@
 
 const express = require('express')
 const router = express.Router()
+const depModel = require('../models/depModel')
 
-const usersModel = require('../models/usersModel')
-
-router.post('/', (req, res) => {
-    
-    usersModel.find({'departamento':{$eq: req.body.departamento}})
+router.get('/', (req,res)=>{
+    depModel.find()
     .exec()
-    .then((result)=>{
-        ShowDep = new usersModel({
-            departamento: req.body.departamento
-        })
-        ShowDep.save()
-        .then(result =>{
-            
-        })
+    .then(result => {
+        res.json(result)
     })
-
+    .catch(error =>{
+        console.log(error)
+    })
 })
-
-
-
 
 
 

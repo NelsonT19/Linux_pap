@@ -15,16 +15,20 @@ function init (){
 
 
 function getTipos(){
+    const depModel = require('../models/depModel')
     const tipos = document.getElementById('tipo')
     fetch('http://localhost:3000/formdata')
     .then(res => res.json())
     .then(data => {
         for(let i=0; i<data.length; i++){
-            const op = `<option value="${data[i].idDepartment}">${data[i].Name_Department}</option>`
+            const op = 
+            `<option>${data[i].nome}</option>`
             tipos.innerHTML += op
         }
     })
-    .catch()
+    .catch(error =>{
+        console.log(error)
+    })
 }
 
 
