@@ -5,17 +5,17 @@ document.querySelector('#menu-btn').onclick = () =>{
     
 }
 
-
+let cardID=''
 
 function init (){
-   getTipos();
+    clearBoxs();
+    getTipos();
   
 }
 
 
 
-function getTipos(){
-    
+function getTipos(){  
     const tipos = document.getElementById('tipo')
     fetch('http://localhost:3000/formdata')
     .then(res => res.json())
@@ -86,7 +86,7 @@ function insertUtilizador(){
 
 
     const obj = {
-        idCard:idcard,
+        idCard: cardID,
         nome: nome,
         morada_rua: morada_rua,
         morada_num: morada_num,
@@ -116,6 +116,48 @@ function insertUtilizador(){
         });
     }
 
+
+        
+ function readcard(){
+    fetch('http://localhost:3000/readcard')
+    .then(res => res.json())
+    .then(data => {
+        if(data){
+            //tirar os espaços
+            const textBoxTag = document.getElementById('tag')
+            textBoxTag.value = data.cardID
+            setcardID(data.cardID)
+        }
+        else {
+            alert('Não foi possível ler o cartão')
+        }
+    })
+       .catch((err) => {
+        alert('Não foi possível ler o cartão')
+    })
+ }
+
+ function setcardID(card){
+    cardID = card
+    console.log(cardID)
+ }
+
+
+
+
+ //clear functions
+
+
+ function clearBoxs(){
+    document.getElementById('nome').value=''
+    document.getElementById('morada_rua').value=''
+    document.getElementById('morada_num').value=''
+    document.getElementById('dnasc').value=''
+    document.getElementById('email').value=''
+    document.getElementById('telem').value=''
+    document.getElementById('tag').value=''
+
+ }
 
 
 function cleanDiv(){

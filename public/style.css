@@ -72,7 +72,7 @@ section{
 .btn:hover{
     font-size: 1.6rem;
     color:black;
-    line-clamp: 1.8;
+    letter-spacing: .2rem;
 }
 
 .header{
@@ -146,6 +146,7 @@ section{
     padding:1rem 0;
     color:#fff;
 }
+
 
 .about .row{
     display: flex;
@@ -332,7 +333,7 @@ section{
 }
 
 
-.resgisterLogin .row{
+.resgisterUser .row{
     display: flex;
     align-items: center;
     background:var(--black);
@@ -341,15 +342,15 @@ section{
 }
 
 
-.resgisterLogin .row .image{
+.resgisterUser .row .image{
     flex:1 1 45rem;
 }
 
-.resgisterLogin .row .image img{
+.resgisterUser .row .image img{
     width: 100%;
     margin-left: 0;
 }
-.resgisterLogin .row .content{
+.resgisterUser .row .content{
     flex:1 1 45rem;
     padding:2rem;
 }
@@ -427,10 +428,7 @@ section{
         font-size: 2rem;
     }
 
-    .header .search-form{
-        width: 90%;
-        right: 2rem;
-    }
+   
 
     .home{
         background-position: left;

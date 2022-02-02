@@ -52,36 +52,7 @@ app.get('/insertUtilizador',function(req,res){
 app.use('/formdata',require('./routes/formdataRoute'))
 app.use('/dep',require('./routes/depRoute'))
 app.use('/createCard', require('./routes/createUsersRoute'))
-
-// api read card 
-const {readCard} = require('./readCard')
-
-
-app.get('/readcard', (req,res)=>{
-   const SerialPort = require("serialport");
-   //configuração da serialport
-   const ReadLine = SerialPort.parsers.Readline;
-   const parser = new ReadLine({delimiter: '\r\n'});
-   const mySerial = new SerialPort("/dev/ttyACM0", {
-      baudRate:9600,
-   });
-   mySerial.pipe(parser);
-   mySerial.on('open',function(){
-      console.log('Connection whit RFID initialised...');
-      parser.on('data', function (data){
-         //console.log(data); 
-         mySerial.close()
-         res.json({cardID: data})
-        console.log(data)
-          //enviar em formato JSON
-        
-          
-      })
-   });
-
-   })
-   
-  //fim api
+app.use('/readcard', require('./routes/readCardRoute'))
 
 
 
