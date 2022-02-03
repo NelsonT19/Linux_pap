@@ -123,12 +123,14 @@ function insertUtilizador(){
     .then(res => res.json())
     .then(data => {
         if(data){
+            let tag = data.cardID.replace(/\s/g,'')
             //tirar os espaços
             const textBoxTag = document.getElementById('tag')
-            textBoxTag.value = data.cardID
-            setcardID(data.cardID)
+            textBoxTag.value = tag
+            setcardID(tag)
         }
         else {
+            console.log(tag)
             alert('Não foi possível ler o cartão')
         }
     })
