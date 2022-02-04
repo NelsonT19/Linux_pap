@@ -1,3 +1,4 @@
+
 let navbar = document.querySelector('.navbar');
 
 document.querySelector('#menu-btn').onclick = () =>{
@@ -122,6 +123,7 @@ function insertUtilizador(){
     fetch('http://localhost:3000/readcard')
     .then(res => res.json())
     .then(data => {
+        //setTimeout(readcard, 5000);
         if(data){
             let tag = data.cardID.replace(/\s/g,'')
             //tirar os espaços
@@ -130,14 +132,23 @@ function insertUtilizador(){
             setcardID(tag)
         }
         else {
-            console.log(tag)
             alert('Não foi possível ler o cartão')
         }
     })
        .catch((err) => {
         alert('Não foi possível ler o cartão')
     })
+    
+
+   
+    //setTimeout(readcard, 5000);
+    //clearTimeout(readcard)
+    
+    
+
  }
+
+ 
 
  function setcardID(card){
     cardID = card
