@@ -1,6 +1,7 @@
 
 const express = require('express')
 const router = express.Router()
+const usersModel = require('../models/usersModel')
 // api read card 
 
 router.get('/', (req,res)=>{
@@ -15,17 +16,59 @@ router.get('/', (req,res)=>{
    mySerial.on('open',function(){
       console.log('Connection whit RFID initialised...');
       parser.on('data', function (data){
-         //console.log(data); 
          mySerial.close()
          res.json({cardID: data})
         console.log(data)
-        //tranformar num json
-          
         
-          
-      })
-   });
+         })
+      });
 
+   })
+
+   router.put('/', (req,res)=>{
+      console.log(req)
+      usersModel.findOne({'idCard':{$eq: req.body.idCard}})
+      .exec()
+      .then(user =>{
+         let estado = user.estado
+         console.log(estado)
+         if(estado == 'Ausente'){
+            usersModel.findOneAndUpdate(
+               {'idCard': {$eq: req.body.idCard}}, 
+               {$set: {'estado': 'Presente'}},
+               {new:true}
+            )
+            .exec()
+            .then(user =>{
+               console.log(user.estado)
+               res.json({msg: 'estado alterado'})
+            })
+            .catch(error=>{
+               console.log(error)
+            })
+         }else{
+            usersModel.findOneAndUpdate(
+               {'idCard': {$eq: req.body.idCard}}, 
+               {$set: {'estado': 'Ausente'}},
+               {new:true}
+            )
+            .exec()
+            .then(user =>{
+               console.log(user.estado)
+               res.json({msg: 'estado alterado'})
+            })
+            .catch(error=>{
+               console.log(error)
+            })
+
+         }
+
+   
+      })
+      .catch(error=>{
+         console.log(error)
+      })
+   
    })
    
   //fim api

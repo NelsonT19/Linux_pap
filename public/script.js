@@ -36,7 +36,7 @@ function getTipos(){
 
 function insertUtilizador(){
 
-    const nome = document.getElementById('nome').value
+    /*const nome = document.getElementById('nome').value
     if(nome=='')
         alert('Tem de preencher o nome.')
 
@@ -83,7 +83,7 @@ function insertUtilizador(){
 
         const idcard = document.getElementById('tag').value
         if(idcard=='')
-            alert('Tem de indicar uma tag.')
+            alert('Tem de indicar uma tag.')*/
 
 
     const obj = {
@@ -108,13 +108,26 @@ function insertUtilizador(){
             body: jsonObj
         }
 
+
+        if(cardID =='' || nome ==''|| morada_rua ==''|| morada_num ==''|| dnasc ==''|| email ==''|| telem ==''){
+
+            const classlb= document.getElementsByClassName('obrig')
+        for(let i=0;i<classlb.length;i++){
+        classlb[i].innerHTML = `*Obrigatório`}
+        alert("Preencha todos os campos!")
+        document.getElementsByClassName('nobrig').innerHTML = " "
+            
+        }else{
+            fetch('http://localhost:3000/createCard',options)
+            .then(res => res.json())
+            .then(data => alert(data.message))
+            .catch((err) => {
+                console.log('Request failed', err.message)
+            });
+
+        }
         
-        fetch('http://localhost:3000/createCard',options)
-        .then(res => res.json())
-        .then(data => alert(data.message))
-        .catch((err) => {
-            console.log('Request failed', err.message)
-        });
+       
     }
 
 

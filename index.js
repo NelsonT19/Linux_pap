@@ -3,6 +3,7 @@ const app = express()
 var indexRouter = require("./routes/loginrouter")
 const path = require('path')
 const connection = require('./dbconnection')
+const usersModel = require('./models/usersModel')
 
 
 // set the view engine to ejs
@@ -53,6 +54,66 @@ app.use('/formdata',require('./routes/formdataRoute'))
 app.use('/dep',require('./routes/depRoute'))
 app.use('/createCard', require('./routes/createUsersRoute'))
 app.use('/readcard', require('./routes/readCardRoute'))
+
+const SerialPort = require("serialport");
+//configuração da serialport
+const ReadLine = SerialPort.parsers.Readline;
+const parser = new ReadLine({delimiter: '\r\n'});
+const mySerial = new SerialPort("/dev/ttyACM0", {
+   baudRate:9600,
+});
+mySerial.pipe(parser);
+mySerial.on('open',function(){
+   console.log('Connection whit RFID initialised...');
+   parser.on('data', function (data){
+      let tag = data.replace(/\s/g,'')
+      //mySerial.close()
+      console.log(tag)
+/*
+     usersModel.findOne({'idCard':{$eq: tag}})
+     .exec()
+     .then(user =>{
+        let estado = user.estado
+        console.log(estado)
+        if(estado == 'Ausente'){
+           usersModel.findOneAndUpdate(
+              {'idCard': {$eq:tag}}, 
+              {$set: {'estado': 'Presente'}},
+              {new:true}
+           )
+           .exec()
+           .then(user =>{
+              console.log(user.estado)
+              res.json({msg: 'estado alterado'})
+           })
+           .catch(error=>{
+              console.log(error)
+           })
+        }else{
+           usersModel.findOneAndUpdate(
+              {'idCard': {$eq:tag}}, 
+              {$set: {'estado': 'Ausente'}},
+              {new:true}
+           )
+           .exec()
+           .then(user =>{
+              console.log(user.estado)
+              res.json({msg: 'estado alterado'})
+           })
+           .catch(error=>{
+              console.log(error)
+           })
+
+        }
+
+  
+     })
+     .catch(error=>{
+        console.log(error)
+     })
+     */
+   })
+});
 
 
 

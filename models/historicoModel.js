@@ -2,9 +2,10 @@
 const mongoose = require('mongoose')
 
 const hitorico = mongoose.Schema({
-    'idCard' : {'type': 'String'},
+    
     'historico':[
-        
+
+            {'idCard' : {'type': 'String'}},
             {'nome':{'type':'String'}},
             {'Departamento' : {'type': 'String'}},
             {'estado': {'type' : 'String'}},

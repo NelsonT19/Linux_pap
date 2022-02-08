@@ -23,20 +23,19 @@ router.post('/', (req, res) => {
             })
             newCard.save()
             .then(result => {
-                console.log('Cartão criado')
                 res.json({msg: 'Cartão criado'})
                 
             })
             .catch(error => {
-                console.log(error)
                 res.json({msg: 'Ocorreu um erro'})
                 
 
             })
         }
         else {
+            
             res.json({msg:'Cartão existente'})
-            console.log(result)
+            
             
         }
     })

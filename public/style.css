@@ -59,7 +59,7 @@ section{
 }
 
 .btn{
-    margin-top: 3rem;
+    margin-top: 1rem;
     margin-left: 3rem;
     display: inline-block;
     padding:.5rem 2rem;
@@ -452,4 +452,12 @@ section{
         font-size: 50%;
     }
 
+}
+.obrig{
+    color: red;
+    font-size: 12px;
+}
+.nobrig{
+    color: #000000;
+    font-size: 12px;
 }
