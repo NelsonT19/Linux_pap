@@ -171,6 +171,8 @@ function insertUtilizador(){
 
 
 
+
+
  //clear functions
 
 

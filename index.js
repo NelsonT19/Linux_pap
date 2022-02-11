@@ -55,7 +55,11 @@ app.use('/dep',require('./routes/depRoute'))
 app.use('/createCard', require('./routes/createUsersRoute'))
 app.use('/readcard', require('./routes/readCardRoute'))
 
+
+
+/*
 const SerialPort = require("serialport");
+const { send } = require('process')
 //configuração da serialport
 const ReadLine = SerialPort.parsers.Readline;
 const parser = new ReadLine({delimiter: '\r\n'});
@@ -69,7 +73,7 @@ mySerial.on('open',function(){
       let tag = data.replace(/\s/g,'')
       //mySerial.close()
       console.log(tag)
-/*
+      
      usersModel.findOne({'idCard':{$eq: tag}})
      .exec()
      .then(user =>{
@@ -84,7 +88,7 @@ mySerial.on('open',function(){
            .exec()
            .then(user =>{
               console.log(user.estado)
-              res.json({msg: 'estado alterado'})
+              //console.log('estado alterado')
            })
            .catch(error=>{
               console.log(error)
@@ -98,7 +102,7 @@ mySerial.on('open',function(){
            .exec()
            .then(user =>{
               console.log(user.estado)
-              res.json({msg: 'estado alterado'})
+             // console.log('estado alterado')
            })
            .catch(error=>{
               console.log(error)
@@ -111,12 +115,10 @@ mySerial.on('open',function(){
      .catch(error=>{
         console.log(error)
      })
-     */
+     
    })
 });
-
-
-
+*/
 
   
 app.listen(3000,(error)=>{
