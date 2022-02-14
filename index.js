@@ -4,35 +4,25 @@ var indexRouter = require("./routes/loginrouter")
 const path = require('path')
 const connection = require('./dbconnection')
 const usersModel = require('./models/usersModel')
+const hbs = require ('hbs')
+const jwt = require('jsonwebtoken')
+const cookieparser = require('cookie-parser')
+const { urlencoded } = require('express')
+const homeRoute = require('./routes/home')
+const userRoute = require('./routes/user')
 
 
-// set the view engine to ejs
 
-const { auth } = require('express-openid-connect');
-require('dotenv').config({path: './private/.env'})
+//bodyparser
+app.use(urlencoded({ extended : false}))
 
-   const config = {
-   authRequired:false,
-   auth0Logout:true,
-   issuerBaseURL: process.env.ISSUER_BASE_URL,
-   baseURL: process.env.BASE_URL,
-   clientID:  process.env.CLIENT_ID,
-   secret:  process.env.SECRET,
-     
-   }
+//cookie parser
+app.use(cookieparser())
 
-   app.set('views','views');
-   app.set('view engine', 'ejs');
-   app.use(express.json());
-   app.use(express.urlencoded({extended:true}));
-   app.use(express.static('./public'));
-   app.use(auth(config))
 
-   app.use("/", indexRouter)
-
-//pase url-encoded bodies (as sent by html forms)
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json({ extended: false }))
+// set the view engine to hbs
+app.use(express.static('./public'))
+app.set('view engine', 'hbs')
 
 
 //define rotas possiveis
@@ -54,6 +44,8 @@ app.use('/formdata',require('./routes/formdataRoute'))
 app.use('/dep',require('./routes/depRoute'))
 app.use('/createCard', require('./routes/createUsersRoute'))
 app.use('/readcard', require('./routes/readCardRoute'))
+app.use('/',homeRoute)
+app.use('/user',userRoute)
 
 
 
