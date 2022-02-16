@@ -27,7 +27,7 @@
         <nav class="navbar">
             <a href="#home">home</a>
             <a href="/insertUtilizador">Insert User</a>
-            <a href="/logout/">Logout</a>
+            <a href="/user/logout">logout</a>
             
         </nav>
         <div class="icons">
@@ -63,9 +63,7 @@
 
     <div class="row">
 
-        <div class="image">
-            <img src="images/boat.jpg" alt="">
-        </div>
+        
 
         <div class="content">
             <div class="container-fluid p-4 text-center"><h1> <span>Control </span>Access</h1>
@@ -95,10 +93,6 @@
             </form>
 
               <div>
-
-              
-            
-               
                 
                 <button  type="button" class="btn" onclick="cleanDiv();">Clean Table</button>
               
@@ -127,13 +121,11 @@
     <div class="links">
         <a href="#home">home</a>
         <a href="#tracking">Tracking</a>
-        <% if(!isAuthenticated) { %>
-            <a href="/login/"">login</a>
+        <a href="/user/logout">logout</a>
             
-        <% } else { %>
-            <a href="/logout/"">logout</a>
+       
            
-       <%  } %>
+     
         
     </div>
 

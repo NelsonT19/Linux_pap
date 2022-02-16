@@ -30,7 +30,7 @@
         <a href="#contact">contact us</a>
         
            
-                <a href="/user/login">login</a>
+               
                 <a href="/mainTracking">Tracking</a>
                 <a href="/user/logout">logout</a>
                
@@ -79,9 +79,13 @@
 
         <div class="content">
             <h3>What are we?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus qui ea ullam, enim tempora ipsum fuga alias quae ratione a officiis id temporibus autem? Quod nemo facilis cupiditate. Ex, vel?</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit amet enim quod veritatis, nihil voluptas culpa! Neque consectetur obcaecati sapiente?</p>
-            
+                <br>
+                <br>
+                <br>
+                <br>
+                <p>Welcome to AccessTracking!</p>
+                <p>This site is intended for the management of attendance and absences.</p>
+                <p> AccessTracking thinking about the best for you!</p>
         </div>
 
     </div>
@@ -148,15 +152,10 @@
         <a href="#">home</a>
         <a href="#about">about</a>
         <a href="#contact">contact us</a>
-
-        <% if(!isAuthenticated) { %>
-            <a href="/login/"">login</a>
-            
-        <% } else { %>
-            <a href="/mainTracking"">Tracking</a>
-            <a href="/logout/"">logout</a>
+            <a href="/mainTracking">Tracking</a>
+            <a href="/user/logout">logout</a>
            
-       <%  } %>
+     
    
     </div>
 

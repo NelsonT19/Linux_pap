@@ -28,7 +28,7 @@
           <a href="#home">Home</a>
           <a href="#register">Register</a>
           <a href="/mainTracking">Tracking</a>
-          <a href="/logout/"">logout</a>
+          <a href="/user/logout">logout</a>
           
       </nav>
       <div class="icons">
@@ -70,9 +70,8 @@
         <div class="image">
             <img src="images/pencil.jpg" alt="">
         </div>
-
         <div class="content">
-          <div class="container-fluid p-4 text-center"><h1>Dados do utilizador</h1>
+          <div class="container-fluid p-4 text-center"><h1>Criar utilizador</h1>
           </div>
           <div class="container">
             <div class="row">
@@ -214,14 +213,11 @@
     <div class="links">
         <a href="#">home</a>
         <a href="#register">Register</a>
-       
-        <% if(!isAuthenticated) { %>
-          <a href="/login/"">login</a>
-          
-      <% } else { %>
-          <a href="/logout/"">logout</a>
+        <a href="/user/logout">logout</a>
+     
+        
          
-     <%  } %>
+  
         
     </div>
 

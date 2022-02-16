@@ -1,28 +1,30 @@
 const express = require('express')
 const app = express()
-var indexRouter = require("./routes/loginrouter")
 const path = require('path')
 const connection = require('./dbconnection')
 const usersModel = require('./models/usersModel')
 const hbs = require ('hbs')
 const jwt = require('jsonwebtoken')
 const cookieparser = require('cookie-parser')
-const { urlencoded } = require('express')
+const { urlencoded, json } = require('express')
+
+
 const homeRoute = require('./routes/home')
 const userRoute = require('./routes/user')
 
 
 
 //bodyparser
-app.use(urlencoded({ extended : false}))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json({ extended: false }))
 
 //cookie parser
 app.use(cookieparser())
 
 
 // set the view engine to hbs
-app.use(express.static('./public'))
-app.set('view engine', 'hbs')
+app.use(express.static(path.join(__dirname, './public')));
+app.set('view engine', 'ejs')
 
 
 //define rotas possiveis
@@ -48,10 +50,9 @@ app.use('/',homeRoute)
 app.use('/user',userRoute)
 
 
+let card = ''
 
-/*
 const SerialPort = require("serialport");
-const { send } = require('process')
 //configuração da serialport
 const ReadLine = SerialPort.parsers.Readline;
 const parser = new ReadLine({delimiter: '\r\n'});
@@ -64,55 +65,60 @@ mySerial.on('open',function(){
    parser.on('data', function (data){
       let tag = data.replace(/\s/g,'')
       //mySerial.close()
-      console.log(tag)
+      
+      card = tag
+      console.log(card)
       
      usersModel.findOne({'idCard':{$eq: tag}})
      .exec()
      .then(user =>{
-        let estado = user.estado
-        console.log(estado)
-        if(estado == 'Ausente'){
-           usersModel.findOneAndUpdate(
-              {'idCard': {$eq:tag}}, 
-              {$set: {'estado': 'Presente'}},
-              {new:true}
-           )
-           .exec()
-           .then(user =>{
-              console.log(user.estado)
-              //console.log('estado alterado')
-           })
-           .catch(error=>{
-              console.log(error)
-           })
-        }else{
-           usersModel.findOneAndUpdate(
-              {'idCard': {$eq:tag}}, 
-              {$set: {'estado': 'Ausente'}},
-              {new:true}
-           )
-           .exec()
-           .then(user =>{
-              console.log(user.estado)
-             // console.log('estado alterado')
-           })
-           .catch(error=>{
-              console.log(error)
-           })
-
+        if(user==null){
+           console.log('cartão n encontrado')
         }
-
-  
+        else{
+         let estado = user.estado
+         console.log(estado)
+         if(estado == 'Ausente'){
+            usersModel.findOneAndUpdate(
+               {'idCard': {$eq:tag}}, 
+               {$set: {'estado': 'Presente'}},
+               {new:true}
+            )
+            .exec()
+            .then(user =>{
+               console.log(user.estado)
+               //console.log('estado alterado')
+            })
+            .catch(error=>{
+               console.log(error)
+            })
+         }else{
+            usersModel.findOneAndUpdate(
+               {'idCard': {$eq:tag}}, 
+               {$set: {'estado': 'Ausente'}},
+               {new:true}
+            )
+            .exec()
+            .then(user =>{
+               console.log(user.estado)
+               // console.log('estado alterado')
+            })
+            .catch(error=>{
+               console.log(error)
+            })
+         }
+      }
      })
      .catch(error=>{
         console.log(error)
      })
-     
    })
 });
-*/
 
-  
+app.get('/readcard', (req, res) => {
+   res.json(card)
+})
+
 app.listen(3000,(error)=>{
     if(error) throw error
     console.log('listening on port 3000')

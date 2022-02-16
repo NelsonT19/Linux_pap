@@ -23,7 +23,10 @@ router.post('/', (req, res) => {
             })
             newCard.save()
             .then(result => {
-                res.json({msg: 'Cartão criado'})
+                res.json({
+                    msg: 'Utilizador adicionado!',
+                    type: 'warning'
+                })
                 
             })
             .catch(error => {
