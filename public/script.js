@@ -120,6 +120,65 @@ function insertUtilizador(){
 
  }
 
+function tableusers() {
+
+    fetch('http://localhost:3000/table')
+        .then(res => res.json())
+        .then(users => {
+
+            if (users.msg) {
+                alert(users.msg)
+            }
+
+            const cab = document.getElementById('cab')
+            cab.innerHTML += `
+      
+        <thead>
+        <tr>
+          <th scope="col">Cartão</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Departamento</th>
+          <th scope="col">Estado</th>
+          <td>Detalhes</td>
+         
+          
+        </tr>
+      </thead>
+        `
+            const tabelaUser = document.getElementById('tabela')
+            tabelaUser.innerHTML = ''
+            for (var i = 0; i < users.length; i++) {
+                let idCard = users[i].idCard
+                let nome = users[i].nome
+                let departamento = users[i].departamento
+                let estado = users[i].estado
+
+                let row = `<tr>
+                            <td>${idCard}</td>
+                            <td>${nome}</td>
+                            <td>${departamento}</td>
+                            <td>${estado}</td>
+                            <td>
+                            <button type="button" class="btnTabela" data-toggle="modal" data-target="#exampleModalCenter">
+                            Ver detalhes
+                          </button>
+                            </td>
+                       </tr>
+                       
+                       `
+                tabelaUser.innerHTML += row
+            }
+
+
+        })
+        .catch((error) => {
+            console.log('Request failed', error.msg)
+        });
+
+
+
+}
+
  
 
  function setcardID(card){

@@ -383,6 +383,14 @@ section{
     color:#fff;
 }
 
+.btnTabela{
+    display: inline-block;
+    padding:.2rem 1rem;
+    font-size: 1.7rem;
+    color:black;
+    background: var(--bg);
+    cursor: pointer;
+}
 
 
 /* media queries  */

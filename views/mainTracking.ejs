@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
+<body onload="tableusers()">
     
     <!-- header section starts  -->
    
@@ -56,47 +56,36 @@
 
 
 <!-- Tracking section starts  -->
-
 <section class="traking_table" id="traking">
 
     <h1 class="heading"> <span>Trac</span>king</h1>
 
     <div class="row">
 
-        
+
 
         <div class="content">
-            <div class="container-fluid p-4 text-center"><h1> <span>Control </span>Access</h1>
+            <div class="container-fluid p-4 text-center">
+                <h1> <span>Control </span>Access</h1>
             </div>
-            <form action="" method="post">
-            <table class=" col-xs-7 table table-striped table-dark table-condensed table-fixed">
-                <thead>
-                  <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Department</th>
-                    <th scope="col">Entrada</th>
-                    <th scope="col">Saída</th>
-                    <th scope="col">Status</th>
-                  </tr>
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <thead class="thead-light" id="cab">
 
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Recursos Humanos</td>
-                    <td>data entrada</td>
-                    <td>data saida</td>
-                    <td>presente/ausente</td>
+                    </thead>
 
-                  </tr>
+                    <tbody class="tabela" id="tabela">
+
+                    </tbody>
+
                 </table>
-            </form>
 
-              <div>
-                
-                <button  type="button" class="btn" onclick="cleanDiv();">Clean Table</button>
-              
-              </div>
+            </div>
+
+            <div class="col-sm-3">
+                <button type="button" onclick="cleanDiv();" class="btn">clean</button>
+            </div>
+
         </div>
 
     </div>

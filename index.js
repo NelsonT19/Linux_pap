@@ -48,6 +48,7 @@ app.use('/createCard', require('./routes/createUsersRoute'))
 app.use('/readcard', require('./routes/readCardRoute'))
 app.use('/',homeRoute)
 app.use('/user',userRoute)
+app.use('/table', require('./routes/tableRoute'))
 
 
 let card = ''
