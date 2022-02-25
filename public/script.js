@@ -190,10 +190,12 @@ function tableusers() {
 }
 
 
+
 function showDetail() {
     fetch('http://localhost:3000/table')
         .then(res => res.json())
         .then(users => {
+            tableusers()
 
                 if (users.msg) {
                     alert(users.msg)

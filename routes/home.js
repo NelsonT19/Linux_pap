@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 
 
 router.get('/', (req,res)=>{
-    res.render('index')
+    res.render('login')
 })
 
 

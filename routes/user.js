@@ -20,8 +20,10 @@ router.post('/register', (req,res)=>{
     const errors = []
     const { name, email,password,password2} = req.body
 
+
     
     if(!name || !email || !password || !password2){
+        alert('wedfwefwef')
         errors.push({msg:"All fields are require"})
         console.log('All fields are require')
     }

@@ -3,15 +3,10 @@ const app = express()
 const path = require('path')
 const connection = require('./dbconnection')
 const usersModel = require('./models/usersModel')
-const hbs = require ('hbs')
+const ejs = require ('ejs')
 const jwt = require('jsonwebtoken')
 const cookieparser = require('cookie-parser')
 const { urlencoded, json } = require('express')
-
-
-const homeRoute = require('./routes/home')
-const userRoute = require('./routes/user')
-
 
 
 //bodyparser
@@ -23,16 +18,14 @@ app.use(cookieparser())
 
 
 // set the view engine to hbs
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static('./public'));
+app.set('views','views');
 app.set('view engine', 'ejs')
+
 
 
 //define rotas possiveis
 
-
-app.get('/',function(req,res){
-   res.render("../views/index");
-});
 
 app.get('/mainTracking',function(req,res){
    res.render("../views/mainTracking");
@@ -46,8 +39,8 @@ app.use('/formdata',require('./routes/formdataRoute'))
 app.use('/dep',require('./routes/depRoute'))
 app.use('/createCard', require('./routes/createUsersRoute'))
 app.use('/readcard', require('./routes/readCardRoute'))
-app.use('/',homeRoute)
-app.use('/user',userRoute)
+app.use('/',require('./routes/home'))
+app.use('/user',require('./routes/user'))
 app.use('/table', require('./routes/tableRoute'))
 
 
