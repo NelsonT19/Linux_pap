@@ -7,6 +7,8 @@ document.querySelector('#menu-btn').onclick = () =>{
 }
 
 
+
+
 let cardID=''
 
 function init (){
@@ -81,13 +83,15 @@ function insertUtilizador(){
 
         fetch('http://localhost:3000/createCard', options)
             .then(res => res.json())
-            .then(data => alert(data.msg))
+            .then(data => alert(data.msg), clearBoxs())
             .catch((err) => {
                 console.log('Request failed', err.message)
             });
         }
        
     }
+
+
 
 
         
@@ -121,6 +125,10 @@ function insertUtilizador(){
  }
 
 function tableusers() {
+    const cab = document.getElementById('cab')
+    cab.innerHTML = " "
+    const cidadesDiv = document.getElementById('tabela')
+    cidadesDiv.innerHTML = " "
 
     fetch('http://localhost:3000/table')
         .then(res => res.json())
@@ -159,11 +167,12 @@ function tableusers() {
                             <td>${departamento}</td>
                             <td>${estado}</td>
                             <td>
-                            <button type="button" class="btnTabela" data-toggle="modal" data-target="#exampleModalCenter">
+                            <button type="button" value=${i} onclick="showDetail()" class="btnTabela"  data-toggle="modal" data-target="#myModal">
                             Ver detalhes
                           </button>
                             </td>
                        </tr>
+                      
                        
                        `
                 tabelaUser.innerHTML += row
@@ -172,12 +181,94 @@ function tableusers() {
 
         })
         .catch((error) => {
+            console.log(error)
             console.log('Request failed', error.msg)
         });
 
 
 
 }
+
+
+function showDetail() {
+    fetch('http://localhost:3000/table')
+        .then(res => res.json())
+        .then(users => {
+
+                if (users.msg) {
+                    alert(users.msg)
+                }
+                document.getElementById('tabela').addEventListener("click", function (e) {
+                    index = e.target.value
+                })
+                
+
+                let user = users[index]
+            
+                let idCard = user.idCard
+                let nome = user.nome
+                let morada_rua = user.morada_rua
+                let morada_num = user.morada_num
+                let datanascimento = user.datanascimento
+                let email = user.email
+                let telemovel = user.telemovel
+                let departamento = user.departamento
+                let estado = user.estado
+
+                const tabelaUser = document.getElementById('tabela')
+                tabelaUser.innerHTML = ''
+
+                const detalhe = document.getElementById('detalhe')
+                detalhe.innerHTML += ''
+                modelWrap = document.createElement('div')
+                modelWrap.innerHTML = 
+        `
+     
+            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Detalhes Do Utilizador</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                        <div class="containerModel">
+                                <div class="row">
+                                        <p>Número do Utilizador:  &nbsp;  <td>${idCard}</td></p>
+                                        <p>Nome:  &nbsp;  <td>${nome}</td></p>
+                                        <p>Morada:  &nbsp;  <td>${morada_rua}</td> </p>
+                                        <p>Nº Porta:  &nbsp;  <td>${morada_num}</td> </p>
+                                        <p>Data Nascimento:  &nbsp;  <td>${datanascimento}</td> </p>
+                                        <p>Email:  &nbsp;  <td>${email}</td> </p>
+                                        <p>Telemovel:  &nbsp;  <td>${telemovel}</td> </p>
+                                        <p>Departamento:  &nbsp;  <td>${departamento}</td></p>
+                                        <p>Estado:  &nbsp;  <td>${estado}</td></p>
+          
+                                </div>
+                        </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+
+      `
+    document.body.append(modelWrap)
+    var modal = new bootstrap.Modal(modelWrap.querySelector('.modal'))
+    modal.show()
+        })
+        .catch((error) => {
+            console.log('Request failed', error.msg)
+        });
+}
+
 
  
 

@@ -390,9 +390,25 @@ section{
     color:black;
     background: var(--bg);
     cursor: pointer;
+    border-radius: 10%;
+    border: #fff;
 }
 
+.modal-header h5{
+    font-size: 2rem;
+    color: black;
+    font-weight: 50%;
+}
+.containerModel p {
+    font-size:1.5rem ;
+    color:black;
+}
 
+.modal-content {
+    padding: 2rem;
+    background: var(--bg);
+    
+}
 /* media queries  */
 @media (max-width:991px){
 
