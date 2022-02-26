@@ -1,15 +1,15 @@
 const { MongoServerClosedError, MongoServerSelectionError, MongoMissingDependencyError } = require('mongodb')
-const mongoose =require('mongoose')
+const mongoose = require('mongoose')
 
 
 const userSchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String,
-        require:true,
+        require: true,
     },
     email: {
         type: String,
-        unique:true,
+        unique: true,
         require: true,
     },
     password: {
@@ -22,4 +22,4 @@ const userSchema = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('User',userSchema)
+module.exports = mongoose.model('User', userSchema)
