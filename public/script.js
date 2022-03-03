@@ -198,39 +198,35 @@ function tableusers() {
 
 
 function showDetail() {
+    document.getElementById('tabela').addEventListener("click", function (e) {
+        index = e.target.value
+    })
     fetch('http://localhost:3000/table')
         .then(res => res.json())
         .then(users => {
-            tableusers()
+            
 
             if (users.msg) {
                 alert(users.msg)
             }
-            document.getElementById('tabela').addEventListener("click", function (e) {
-                index = e.target.value
-            })
+                let user = users[index]
+
+                let idCard = user.idCard
+                let nome = user.nome
+                let morada_rua = user.morada_rua
+                let morada_num = user.morada_num
+                let datanascimento = user.datanascimento
+                let email = user.email
+                let telemovel = user.telemovel
+                let departamento = user.departamento
+                let estado = user.estado
 
 
-            let user = users[index]
-
-            let idCard = user.idCard
-            let nome = user.nome
-            let morada_rua = user.morada_rua
-            let morada_num = user.morada_num
-            let datanascimento = user.datanascimento
-            let email = user.email
-            let telemovel = user.telemovel
-            let departamento = user.departamento
-            let estado = user.estado
-
-            const tabelaUser = document.getElementById('tabela')
-            tabelaUser.innerHTML = ''
-
-            const detalhe = document.getElementById('detalhe')
-            detalhe.innerHTML += ''
-            modelWrap = document.createElement('div')
-            modelWrap.innerHTML =
-                `
+                const detalhe = document.getElementById('detalhe')
+                detalhe.innerHTML += ''
+                modelWrap = document.createElement('div')
+                modelWrap.innerHTML =
+                    `
      
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
@@ -268,12 +264,12 @@ function showDetail() {
        
 
       `
-            document.body.append(modelWrap)
-            var modal = new bootstrap.Modal(modelWrap.querySelector('.modal'))
-            modal.show()
+                document.body.append(modelWrap)
+                var modal = new bootstrap.Modal(modelWrap.querySelector('.modal'))
+                modal.show() 
         })
         .catch((error) => {
-            console.log('Request failed', error.msg)
+            console.log('Request failed', error.message)
         });
 }
 

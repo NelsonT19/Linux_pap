@@ -3,7 +3,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 
 
-router.get('/', (req, res) => {
+router.get('/user/login', (req, res) => {
     res.render('login')
 })
 

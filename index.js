@@ -26,6 +26,10 @@ app.set('view engine', 'ejs')
 
 //define rotas possiveis
 
+app.get('/', function (req, res) {
+   res.render("../views/index");
+});
+
 
 app.get('/mainTracking', function (req, res) {
    res.render("../views/mainTracking");
