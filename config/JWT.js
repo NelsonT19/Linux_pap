@@ -1,20 +1,20 @@
 
 
-const loginrequired = (req,res,next)=>{
+const loginrequired = (req, res, next) => {
     //grab the token of user
     const token = req.cookies["access-token"]
     //check of token exits
-    if(token){
+    if (token) {
         //verify the token
         const validToken = jwt.verify(token, "secretkey")
-        if(validToken){
+        if (validToken) {
             userId = validToken.id
             console.log(req.userId)
 
-            
+
             next()
         }
-        else{
+        else {
             res.redirect('/user/login')
         }
     }

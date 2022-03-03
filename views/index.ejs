@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="PT-pt">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,77 +9,67 @@
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- custom css file link  -->
     <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
-   
-<!-- header section starts  -->
-    
-<header class="header">
 
-    <a href="/" class="logo">
-        <img src="images/at.png" alt="">
-    </a>
-   
-    <nav class="navbar">
-  
-        <a href="/">home</a>
-        <a href="#about">about us</a>
-        <a href="#contact">contact us</a>
-        
-           
-               
-                <a href="/mainTracking">Tracking</a>
-                <a href="/user/logout">logout</a>
-               
-        
-       
-       
-          
-    
-        
-    </nav>
-    <div class="icons">
-        <div class="fas fa-bars" id="menu-btn"></div>
-        
-    </div>
+    <!-- header section starts  -->
 
-   
-  </header>
+    <header class="header">
 
-<!-- header section ends -->
+        <a href="/dashboard" class="logo">
+            <img src="images/at.png" alt="">
+        </a>
 
-<!-- home section starts  -->
+        <nav class="navbar">
+            <a href="/dashboard">home</a>
+            <a href="#about">about us</a>
+            <a href="#contact">contact us</a>
+            <a href="/insertUtilizador">Insert User</a>
+            <a href="/mainTracking">Tracking</a>
+            <a href="/user/logout">logout</a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
 
-<section class="home" id="home">
-
-    <div class="content">
-        <h3>AccessTracking</h3>
-        
-        
-    </div>
-
-</section>
-
-<!-- home section ends -->
-
-<!-- about section starts  -->
-
-<section class="about" id="about">
-
-    <h1 class="heading"> <span>about</span> us </h1>
-
-    <div class="row">
-
-        <div class="image">
-            <img src="images/comp.jpg" alt="">
         </div>
 
+
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+
         <div class="content">
-            <h3>What are we?</h3>
+            <h3>AccessTracking</h3>
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- about section starts  -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> <span>about</span> us </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="images/comp.jpg" alt="">
+            </div>
+
+            <div class="content">
+                <h3>What are we?</h3>
                 <br>
                 <br>
                 <br>
@@ -86,91 +77,97 @@
                 <p>Welcome to AccessTracking!</p>
                 <p>This site is intended for the management of attendance and absences.</p>
                 <p> AccessTracking thinking about the best for you!</p>
+            </div>
+
         </div>
 
-    </div>
+    </section>
 
-</section>
-
-<!-- about section ends -->
+    <!-- about section ends -->
 
 
 
-<!-- contact section starts  -->
+    <!-- contact section starts  -->
 
-<section class="contact" id="contact">
+    <section class="contact" id="contact">
 
-    <h1 class="heading"> <span>contact</span> us </h1>
+        <h1 class="heading"> <span>contact</span> us </h1>
 
-    <div class="row">
+        <div class="row">
 
-        <iframe class="map" src="https://www.google.com/maps/d/u/0/embed?mid=1v0CNoTMlG_BubjCy7dOvRCduYps&msa=0&ie=UTF8&t=h&ll=37.74807335613916%2C-25.664681227326753&spn=0.741246%2C1.906128&z=18&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            <iframe class="map"
+                src="https://www.google.com/maps/d/u/0/embed?mid=1v0CNoTMlG_BubjCy7dOvRCduYps&msa=0&ie=UTF8&t=h&ll=37.74807335613916%2C-25.664681227326753&spn=0.741246%2C1.906128&z=18&output=embed"
+                allowfullscreen="" loading="lazy"></iframe>
 
-        <form action="https://formsubmit.co/nelsont408@gmail.com" method="POST">
-            <h3>get in touch</h3>
-            <div class="inputBox">
-                <span class="fas fa-user"></span>
-                <input type="text" name="name" placeholder="name" required >
-            </div>
-            <div class="inputBox">
-                <span class="fas fa-envelope"></span>
-                <input type="email" name="email" placeholder="email" required>
-            </div> 
+            <form action="https://formsubmit.co/nelsont408@gmail.com" method="POST">
+                <h3>get in touch</h3>
+                <div class="inputBox">
+                    <span class="fas fa-user"></span>
+                    <input type="text" name="name" placeholder="name" required>
+                </div>
+                <div class="inputBox">
+                    <span class="fas fa-envelope"></span>
+                    <input type="email" name="email" placeholder="email" required>
+                </div>
 
-            <div>
-                <textarea type="message" name="message" id="message" rows="8" cols="80"  class="input-itemtextarea" placeholder="Message..."></textarea>
+                <div>
+                    <textarea type="message" name="message" id="message" rows="8" cols="80" class="input-itemtextarea"
+                        placeholder="Message..."></textarea>
 
-            </div>
-            
-            <input type="hidden" name="_autoresponse" value="Thanks for contacting us !
+                </div>
+
+                <input type="hidden" name="_autoresponse" value="Thanks for contacting us !
             We will contact you shortly.">
-            <input type="submit" value="Send" class="submit">
-        </form>
+                <input type="submit" value="Send" class="submit">
+            </form>
 
-    </div>
+        </div>
 
-</section>
+    </section>
 
-<!-- contact section ends -->
+    <!-- contact section ends -->
 
 
-<!-- footer section starts  -->
-  
+    <!-- footer section starts  -->
 
-<section class="footer">
-    
 
-    <div class="share">
-        <a href="https://www.facebook.com/escoladenovastecnologias/" class="fab fa-facebook-f"></a>
-        <a href="https://twitter.com/Oklaw_1337" class="fab fa-twitter"></a>
-        <a href="https://www.instagram.com/enta_inova/" class="fab fa-instagram"></a>
-        
-       
-    </div>
+    <section class="footer">
 
-    <div class="links">
-        <a href="#">home</a>
-        <a href="#about">about</a>
-        <a href="#contact">contact us</a>
+
+        <div class="share">
+            <a href="https://www.facebook.com/escoladenovastecnologias/" class="fab fa-facebook-f"></a>
+            <a href="https://twitter.com/Oklaw_1337" class="fab fa-twitter"></a>
+            <a href="https://www.instagram.com/enta_inova/" class="fab fa-instagram"></a>
+
+
+        </div>
+
+        <div class="links">
+            <a href="#">home</a>
+            <a href="#about">about</a>
+            <a href="#contact">contact us</a>
             <a href="/mainTracking">Tracking</a>
+            <a href="/insertUtilizador">Insert User</a>
             <a href="/user/logout">logout</a>
-           
-     
-   
-    </div>
-
-    <div class="credit">created by <span>Nelson Teixeira</span> | all rights reserved From <a href="https://www.enta.store/" target="_blank">ENTA</a></div>
-
-</section>
 
 
 
-<!-- footer section ends -->
+        </div>
+
+        <div class="credit">created by <span>Nelson Teixeira</span> | all rights reserved From <a
+                href="https://www.enta.store/" target="_blank">ENTA</a></div>
+
+    </section>
 
 
 
-<!-- custom js file link  -->
-<script type="text/javascript" src="script.js"></script>
+    <!-- footer section ends -->
+
+
+
+    <!-- custom js file link  -->
+    <script type="text/javascript" src="script.js"></script>
 
 </body>
+
 </html>

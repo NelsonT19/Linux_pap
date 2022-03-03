@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const depart = mongoose.Schema({
-    'departamentos':[      
-            {'type':'String'}
-        ]
+    'departamentos': [
+        { 'type': 'String' }
+    ]
 })
 
-module.exports = mongoose.model('depModel',depart)
+module.exports = mongoose.model('depModel', depart)
