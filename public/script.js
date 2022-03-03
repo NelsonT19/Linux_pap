@@ -276,7 +276,7 @@ function showDetail() {
             console.log('Request failed', error.msg)
         });
 }
-/* efe*/
+
 
 
 
