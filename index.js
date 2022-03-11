@@ -92,7 +92,7 @@ mySerial.on('open', function () {
                      })
                } else {
                   usersModel.findOneAndUpdate(
-                     { 'idCard': { $eq: tag } },
+                     { 'idCard': { $eq: tag } }, 
                      { $set: { 'estado': 'Ausente' } },
                      { new: true }
                   )
@@ -125,3 +125,4 @@ app.listen(3000, (error) => {
 
 
 
+//d
