@@ -30,7 +30,7 @@ router.post('/register', (req, res) => {
     var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_'{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     if (!email.match(validRegex)) {
-        errors.push({ message: 'Ivalid Email' })
+        errors.push({ msg: 'Ivalid Email' })
         console.log('Ivalid Email')
     }
 
@@ -125,11 +125,12 @@ router.post('/login', (req, res) => {
                         res.redirect('/dashboard')
                     }
                     else {
-                        res.render('login')
+                        res.render('login')                     
                     }
                 })
             } else {
                 res.render('login')
+                
             }
         })
 })
